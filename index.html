@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Status Checker</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("static/bg.jpg"); 
+           
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .overlay {
+            background-color: rgb(13, 13, 13); 
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .result p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        
+        <div class="container">
+            <h1>API Status Checker</h1>
+            <form method="post">
+                <label for="url">Enter the API URL to check:</label><br>
+                <input type="text" id="url" name="url" required><br>
+                <button type="submit">Submit</button>
+            </form>
+            {% if result %}
+                <div class="result">
+                    <h2>Result</h2>
+                    <p>QueriedAt: {{ result['QueriedAt'] }}</p>
+                    <p>ResponseCode: {{ result['ResponseCode'] }}</p>
+                    <p>IsAlive: {{ result['IsAlive'] }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
